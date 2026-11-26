@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">TripMate</string>
+    <string name="tripmate">TripMate</string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="sign_in_to_continue_planning_your_journey">Sign in to continue planning your journey.</string>
+    <string name="email_address">Email address</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account_register">Don\'t have an account? Register</string>
+    <string name="mount_fuji_travel_scenery">Mount Fuji travel scenery</string>
 </resources>

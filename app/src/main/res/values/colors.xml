@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Basic Colours -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- TripMate Main Theme -->
+    <color name="primary">#245B55</color>
+    <color name="background">#F3EFFA</color>
+    <color name="surface">#FFFFFFFF</color>
+
+    <!-- Text Colours -->
+    <color name="text_primary">#222222</color>
+    <color name="text_secondary">#777777</color>
+
+    <!-- Accent Colours -->
+    <color name="accent_lavender">#DCCEF2</color>
+    <color name="accent_pink">#F5DCE8</color>
+    <color name="accent_sage">#DDEBE2</color>
+
 </resources>
