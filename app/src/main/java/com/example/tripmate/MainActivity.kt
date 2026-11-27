@@ -1,20 +1,24 @@
 package com.example.tripmate
 
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
-
 import com.example.tripmate.fragments.HomeFragment
 import com.example.tripmate.fragments.TripsFragment
 import com.example.tripmate.fragments.ExploreFragment
 import com.example.tripmate.fragments.ExpensesFragment
 import com.example.tripmate.fragments.ProfileFragment
-
+import com.example.tripmate.fragments.TripDetailsFragment
 class MainActivity : AppCompatActivity() {
+
+    private val selectedColor = 0xFF245B55.toInt()
+    private val unselectedColor = 0xFF8A8492.toInt()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,38 +41,82 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        if (savedInstanceState == null) {
-            loadFragment(HomeFragment())
-        }
-
         findViewById<LinearLayout>(R.id.navHome).setOnClickListener {
-            loadFragment(HomeFragment())
+            navigateTo(HomeFragment(), R.id.navHome)
         }
 
         findViewById<LinearLayout>(R.id.navTrips).setOnClickListener {
-            loadFragment(TripsFragment())
+            navigateTo(TripsFragment(), R.id.navTrips)
         }
 
         findViewById<LinearLayout>(R.id.navExplore).setOnClickListener {
-            loadFragment(ExploreFragment())
+            navigateTo(ExploreFragment(), R.id.navExplore)
         }
 
         findViewById<LinearLayout>(R.id.navExpenses).setOnClickListener {
-            loadFragment(ExpensesFragment())
+            navigateTo(ExpensesFragment(), R.id.navExpenses)
         }
 
         findViewById<LinearLayout>(R.id.navProfile).setOnClickListener {
-            loadFragment(ProfileFragment())
+            navigateTo(ProfileFragment(), R.id.navProfile)
+        }
+
+        if (savedInstanceState == null) {
+            navigateTo(HomeFragment(), R.id.navHome)
         }
     }
 
     fun openExpenses() {
-        loadFragment(ExpensesFragment())
+        navigateTo(ExpensesFragment(), R.id.navExpenses)
+    }
+    fun openTripDetails() {
+        navigateTo(TripDetailsFragment(), R.id.navTrips)
     }
 
-    private fun loadFragment(fragment: Fragment) {
+    fun openTrips() {
+        navigateTo(TripsFragment(), R.id.navTrips)
+    }
+
+    private fun navigateTo(fragment: Fragment, selectedNavId: Int) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainer, fragment)
             .commit()
+
+        updateNavigationSelection(selectedNavId)
+    }
+
+    private fun updateNavigationSelection(selectedNavId: Int) {
+
+        val navigationIds = listOf(
+            R.id.navHome,
+            R.id.navTrips,
+            R.id.navExplore,
+            R.id.navExpenses,
+            R.id.navProfile
+        )
+
+        navigationIds.forEach { navId ->
+
+            val navigationItem = findViewById<LinearLayout>(navId)
+            val isSelected = navId == selectedNavId
+
+            val color = if (isSelected) {
+                selectedColor
+            } else {
+                unselectedColor
+            }
+
+            val icon = navigationItem.getChildAt(0) as ImageView
+            val label = navigationItem.getChildAt(1) as TextView
+
+            icon.setColorFilter(color)
+            label.setTextColor(color)
+
+            label.setTypeface(
+                null,
+                if (isSelected) android.graphics.Typeface.BOLD
+                else android.graphics.Typeface.NORMAL
+            )
+        }
     }
 }

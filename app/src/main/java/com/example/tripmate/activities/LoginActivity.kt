@@ -1,11 +1,14 @@
 package com.example.tripmate.activities
+
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.tripmate.MainActivity
 import com.example.tripmate.R
 
 class LoginActivity : AppCompatActivity() {
@@ -16,8 +19,11 @@ class LoginActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
 
+        // Handle system bar spacing
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val systemBars = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars()
+            )
 
             v.setPadding(
                 systemBars.left,
@@ -39,6 +45,12 @@ class LoginActivity : AppCompatActivity() {
         // Navigate to Register screen
         findViewById<TextView>(R.id.tvRegister).setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
+        }
+
+        // TEMPORARY DEMO LOGIN
+        findViewById<Button>(R.id.btnLogin).setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 }
