@@ -188,7 +188,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
-                android:text="12–18 Dec 2026"
+                android:text="11–18 Dec 2026"
                 android:textColor="#858092"
                 android:textSize="12sp" />
 
@@ -203,7 +203,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="7 days"
+                    android:text="8 days"
                     android:textColor="#245B55"
                     android:textSize="12sp"
                     android:textStyle="bold" />

@@ -1,12 +1,15 @@
 package com.example.tripmate.fragments
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.example.tripmate.MainActivity
 import com.example.tripmate.R
 
 class TripsFragment : Fragment(R.layout.fragment_trips) {
@@ -23,8 +26,14 @@ class TripsFragment : Fragment(R.layout.fragment_trips) {
         val upcoming = view.findViewById<TextView>(R.id.filterUpcoming)
         val completed = view.findViewById<TextView>(R.id.filterCompleted)
 
-        searchInput.addTextChangedListener(object :
-            android.text.TextWatcher {
+        // Open the existing Trip Details screen
+        view.findViewById<TextView>(R.id.btnTripDetails)
+            .setOnClickListener {
+                (activity as? MainActivity)?.openTripDetails()
+            }
+
+        // Search trips
+        searchInput.addTextChangedListener(object : TextWatcher {
 
             override fun beforeTextChanged(
                 s: CharSequence?, start: Int, count: Int, after: Int
@@ -33,13 +42,14 @@ class TripsFragment : Fragment(R.layout.fragment_trips) {
             override fun onTextChanged(
                 s: CharSequence?, start: Int, before: Int, count: Int
             ) {
-                searchText = s?.toString()?.trim() ?: ""
+                searchText = s?.toString()?.trim()?.lowercase() ?: ""
                 updateTripVisibility(view)
             }
 
-            override fun afterTextChanged(s: android.text.Editable?) {}
+            override fun afterTextChanged(s: Editable?) {}
         })
 
+        // Filter buttons
         allTrips.setOnClickListener {
             selectFilter("All trips", view)
         }
@@ -63,6 +73,7 @@ class TripsFragment : Fragment(R.layout.fragment_trips) {
     }
 
     private fun updateFilterAppearance(view: View) {
+
         val filters = listOf(
             R.id.filterAll to "All trips",
             R.id.filterUpcoming to "Upcoming",
@@ -70,6 +81,7 @@ class TripsFragment : Fragment(R.layout.fragment_trips) {
         )
 
         filters.forEach { (id, label) ->
+
             val filterView = view.findViewById<TextView>(id)
             val isSelected = selectedFilter == label
 
@@ -84,24 +96,35 @@ class TripsFragment : Fragment(R.layout.fragment_trips) {
             filterView.setTextColor(
                 ContextCompat.getColor(
                     requireContext(),
-                    if (isSelected) R.color.white else R.color.tripmate_teal
+                    if (isSelected) R.color.white
+                    else R.color.tripmate_teal
                 )
             )
         }
     }
 
     private fun updateTripVisibility(view: View) {
+
         val tripCard = view.findViewById<LinearLayout>(R.id.japanTripCard)
         val emptyState = view.findViewById<LinearLayout>(R.id.emptyTripsState)
 
-        val matchesSearch = "japan adventure japan".contains(
-            searchText.lowercase()
-        )
+        // Searchable information for the existing demo trip
+        val tripSearchContent = """
+            tokyo osaka adventure japan mount fuji kyoto nara
+            8 days 7 nights october 10 17
+        """.lowercase()
 
-        val shouldShowTrip =
-            selectedFilter != "Completed" && matchesSearch
+        val matchesSearch = tripSearchContent.contains(searchText)
 
-        tripCard.visibility = if (shouldShowTrip) View.VISIBLE else View.GONE
-        emptyState.visibility = if (shouldShowTrip) View.GONE else View.VISIBLE
+        // This demo trip is currently an upcoming trip
+        val matchesFilter = selectedFilter != "Completed"
+
+        val shouldShowTrip = matchesSearch && matchesFilter
+
+        tripCard.visibility =
+            if (shouldShowTrip) View.VISIBLE else View.GONE
+
+        emptyState.visibility =
+            if (shouldShowTrip) View.GONE else View.VISIBLE
     }
 }

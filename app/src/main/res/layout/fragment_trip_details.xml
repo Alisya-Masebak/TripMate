@@ -68,16 +68,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                android:text="Japan Adventure"
+                android:text="Tokyo &amp; Osaka Adventure"
                 android:textColor="#245B55"
-                android:textSize="24sp"
+                android:textSize="23sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="12–18 December 2026"
+                android:text="11–18 December"
                 android:textColor="#777184"
                 android:textSize="14sp" />
 
@@ -111,11 +111,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
-                        android:text="7 days"
+                        android:text="8D 7N"
                         android:textColor="#245B55"
                         android:textSize="15sp"
                         android:textStyle="bold" />
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -127,7 +126,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="DESTINATION"
+                        android:text="COUNTRY"
                         android:textColor="#777184"
                         android:textSize="10sp"
                         android:textStyle="bold" />
@@ -140,7 +139,6 @@
                         android:textColor="#245B55"
                         android:textSize="15sp"
                         android:textStyle="bold" />
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -152,7 +150,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="CITIES"
+                        android:text="AREAS"
                         android:textColor="#777184"
                         android:textSize="10sp"
                         android:textStyle="bold" />
@@ -161,18 +159,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
-                        android:text="3 cities"
+                        android:text="5 areas"
                         android:textColor="#245B55"
                         android:textSize="15sp"
                         android:textStyle="bold" />
-
                 </LinearLayout>
-
             </LinearLayout>
-
         </LinearLayout>
 
-        <!-- Cities -->
+        <!-- Destinations -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -193,7 +188,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="01  Kyoto"
+                android:text="01  Tokyo"
                 android:textColor="#245B55"
                 android:textSize="17sp"
                 android:textStyle="bold" />
@@ -202,10 +197,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Explore traditional streets, temples and Japanese culture."
+                android:text="Explore Asakusa, Senso-ji Temple, Nakamise Street, Shibuya and Shibuya Sky."
                 android:textColor="#777184"
                 android:textSize="13sp" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -219,7 +213,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="02  Osaka"
+                android:text="02  Mount Fuji"
                 android:textColor="#245B55"
                 android:textSize="17sp"
                 android:textStyle="bold" />
@@ -228,10 +222,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Enjoy street food, shopping and city attractions."
+                android:text="Visit Iyashi no Sato, Oishi Park, Lake Kawaguchiko and Gotemba Premium Outlets."
                 android:textColor="#777184"
                 android:textSize="13sp" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -245,7 +238,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="03  Tokyo"
+                android:text="03  Osaka"
                 android:textColor="#245B55"
                 android:textSize="17sp"
                 android:textStyle="bold" />
@@ -254,18 +247,67 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Discover modern attractions, entertainment and local experiences."
+                android:text="Discover Osaka Castle, Namba, Shinsaibashi, Dotonbori and the Glico Sign."
                 android:textColor="#777184"
                 android:textSize="13sp" />
-
         </LinearLayout>
 
-        <!-- Itinerary -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_card_lavender"
+            android:orientation="vertical"
+            android:padding="17dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="04  Kyoto"
+                android:textColor="#245B55"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Explore Arashiyama Bamboo Grove, Higashiyama, Ninenzaka, Sannenzaka and Kiyomizu-dera."
+                android:textColor="#777184"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_card_sage"
+            android:orientation="vertical"
+            android:padding="17dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="05  Nara"
+                android:textColor="#245B55"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Visit Nara Park and see the famous free-roaming deer."
+                android:textColor="#777184"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <!-- Daily Itinerary -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="27dp"
-            android:text="Sample Itinerary"
+            android:text="Daily Itinerary"
             android:textColor="#245B55"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -274,7 +316,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="A suggested outline for your Japan adventure."
+            android:text="Your planned activities for each day of the journey."
             android:textColor="#858092"
             android:textSize="13sp" />
 
@@ -290,7 +332,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="DAY 1 · 12 DEC"
+                android:text="DAY 1 · 11 DECEMBER"
                 android:textColor="#245B55"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -299,7 +341,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
-                android:text="Arrival in Kyoto"
+                android:text="Kuala Lumpur → Haneda Airport"
                 android:textColor="#245B55"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -308,10 +350,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Arrive, check in and explore the nearby area."
+                android:text="Arrive at Haneda Airport at 10:35 PM. Meet the tour guide at the arrival gate and take private transport to the accommodation."
                 android:textColor="#858092"
                 android:textSize="13sp" />
-
         </LinearLayout>
 
         <!-- Day 2 -->
@@ -326,7 +367,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="DAY 2 · 13 DEC"
+                android:text="DAY 2 · 12 DECEMBER"
                 android:textColor="#245B55"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -335,7 +376,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
-                android:text="Kyoto Cultural Exploration"
+                android:text="Mount Fuji Tour"
                 android:textColor="#245B55"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -344,10 +385,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Visit traditional streets and famous temples."
+                android:text="• Iyashi no Sato&#10;• Oishi Park&#10;• Lake Kawaguchiko&#10;• Gotemba Premium Outlets&#10;&#10;Return to Tokyo accommodation."
                 android:textColor="#858092"
                 android:textSize="13sp" />
-
         </LinearLayout>
 
         <!-- Day 3 -->
@@ -362,7 +402,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="DAY 3 · 14 DEC"
+                android:text="DAY 3 · 13 DECEMBER"
                 android:textColor="#245B55"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -371,7 +411,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
-                android:text="Travel to Osaka"
+                android:text="Tokyo City Tour"
                 android:textColor="#245B55"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -380,10 +420,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Travel to Osaka and explore the city."
+                android:text="• Asakusa&#10;• Nakamise Street&#10;• Senso-ji Temple&#10;• Shibuya&#10;• Shibuya Sky&#10;• Shibuya Crossing&#10;&#10;Return to accommodation."
                 android:textColor="#858092"
                 android:textSize="13sp" />
-
         </LinearLayout>
 
         <!-- Day 4 -->
@@ -398,7 +437,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="DAY 4 · 15 DEC"
+                android:text="DAY 4 · 14 DECEMBER"
                 android:textColor="#245B55"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -407,7 +446,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
-                android:text="Osaka City Experience"
+                android:text="Tokyo → Osaka"
                 android:textColor="#245B55"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -416,10 +455,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Discover shopping areas and local food."
+                android:text="• Depart from Tokyo Station&#10;• Take the bullet train to Osaka (approximately 2 hours 30 minutes)&#10;• Visit Osaka Castle&#10;&#10;Transfer to Osaka accommodation."
                 android:textColor="#858092"
                 android:textSize="13sp" />
-
         </LinearLayout>
 
         <!-- Day 5 -->
@@ -434,7 +472,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="DAY 5 · 16 DEC"
+                android:text="DAY 5 · 15 DECEMBER"
                 android:textColor="#245B55"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -443,7 +481,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
-                android:text="Travel to Tokyo"
+                android:text="Kyoto Tour"
                 android:textColor="#245B55"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -452,10 +490,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Travel to Tokyo and settle into your accommodation."
+                android:text="• Arashiyama Bamboo Grove&#10;• Higashiyama&#10;• Ninenzaka&#10;• Sannenzaka&#10;• Kiyomizu-dera&#10;&#10;Some destinations may depend on available time and conditions."
                 android:textColor="#858092"
                 android:textSize="13sp" />
-
         </LinearLayout>
 
         <!-- Day 6 -->
@@ -470,7 +507,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="DAY 6 · 17 DEC"
+                android:text="DAY 6 · 16 DECEMBER"
                 android:textColor="#245B55"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -479,7 +516,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
-                android:text="Explore Tokyo"
+                android:text="Nara &amp; Osaka Tour"
                 android:textColor="#245B55"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -488,10 +525,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Enjoy Tokyo's shopping, entertainment and attractions."
+                android:text="• Nara Park&#10;• Namba&#10;• Shinsaibashi&#10;• Dotonbori&#10;• Glico Sign&#10;&#10;Return to accommodation."
                 android:textColor="#858092"
                 android:textSize="13sp" />
-
         </LinearLayout>
 
         <!-- Day 7 -->
@@ -506,7 +542,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="DAY 7 · 18 DEC"
+                android:text="DAY 7 · 17 DECEMBER"
                 android:textColor="#245B55"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -515,7 +551,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
-                android:text="Departure"
+                android:text="Free &amp; Easy"
                 android:textColor="#245B55"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -524,10 +560,151 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Check out and prepare for your journey home."
+                android:text="Enjoy a free day to explore independently, go shopping or visit places of your choice. No tour guide is provided for this day."
                 android:textColor="#858092"
                 android:textSize="13sp" />
+        </LinearLayout>
 
+        <!-- Day 8 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/surface"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DAY 8 · 18 DECEMBER"
+                android:textColor="#245B55"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="Osaka → Kuala Lumpur"
+                android:textColor="#245B55"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Take private transport to Kansai International Airport. The transfer is scheduled 3 hours before the 11:05 AM departure."
+                android:textColor="#858092"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <!-- Transport Information -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:text="Transport &amp; Travel"
+            android:textColor="#245B55"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/bg_card_blue"
+            android:orientation="vertical"
+            android:padding="17dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Private Transport"
+                android:textColor="#245B55"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Private transport is arranged for the tour days and airport transfers."
+                android:textColor="#777184"
+                android:textSize="13sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="13dp"
+                android:background="#C9DCE8" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:text="Bullet Train"
+                android:textColor="#245B55"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Travel from Tokyo to Osaka by bullet train on Day 4."
+                android:textColor="#777184"
+                android:textSize="13sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="13dp"
+                android:background="#C9DCE8" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:text="Tour Guide"
+                android:textColor="#245B55"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="A private tour guide is arranged for the scheduled tour days. Day 7 is free and easy without a tour guide."
+                android:textColor="#777184"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <!-- Included Tickets -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:text="Included Tickets"
+            android:textColor="#245B55"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/bg_card_pink"
+            android:orientation="vertical"
+            android:padding="17dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="• Iyashi no Sato&#10;• Shibuya Sky&#10;• Bullet Train&#10;• Osaka Castle"
+                android:textColor="#245B55"
+                android:textSize="14sp" />
         </LinearLayout>
 
         <!-- Back Button -->
@@ -544,5 +721,4 @@
             android:textStyle="bold" />
 
     </LinearLayout>
-
 </ScrollView>

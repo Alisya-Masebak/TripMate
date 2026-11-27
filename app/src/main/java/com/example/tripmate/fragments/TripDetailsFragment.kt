@@ -18,14 +18,10 @@ class TripDetailsFragment : Fragment(R.layout.fragment_trip_details) {
                 (activity as? MainActivity)?.openTrips()
             }
 
+        // Back to My Trips from bottom button
         view.findViewById<TextView>(R.id.btnBackToTripsBottom)
             .setOnClickListener {
                 (activity as? MainActivity)?.openTrips()
-            }
-        // Open Japan Adventure details
-        view.findViewById<TextView>(R.id.btnTripDetails)
-            .setOnClickListener {
-                (activity as? MainActivity)?.openTripDetails()
             }
     }
 }
