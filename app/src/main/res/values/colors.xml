@@ -20,5 +20,11 @@
     <color name="accent_sage">#DDEBE2</color>
 
     <color name="tripmate_teal">#245B55</color>
+    <color name="card_sage">#DDEBE2</color>
+    <color name="card_lavender">#E5DDF5</color>
+    <color name="card_pink">#F5DCE8</color>
+    <color name="card_blue">#DCEBF4</color>
+    <color name="card_peach">#F7E8D8</color>
+
 
 </resources>
