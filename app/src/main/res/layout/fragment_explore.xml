@@ -144,7 +144,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_trip_card"
+                android:background="@drawable/bg_card_lavender"
                 android:orientation="vertical"
                 android:padding="12dp">
 
@@ -180,7 +180,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_trip_card"
+                android:background="@drawable/bg_card_pink"
                 android:orientation="vertical"
                 android:padding="12dp">
 
@@ -216,7 +216,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_trip_card"
+                android:background="@drawable/bg_card_blue"
                 android:orientation="vertical"
                 android:padding="12dp">
 
@@ -252,7 +252,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_trip_card"
+                android:background="@drawable/bg_card_sage"
                 android:orientation="vertical"
                 android:padding="12dp">
 
@@ -288,7 +288,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_trip_card"
+                android:background="@drawable/bg_card_blue"
                 android:orientation="vertical"
                 android:padding="12dp">
 
@@ -324,7 +324,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_trip_card"
+                android:background="@drawable/bg_card_peach"
                 android:orientation="vertical"
                 android:padding="12dp">
 

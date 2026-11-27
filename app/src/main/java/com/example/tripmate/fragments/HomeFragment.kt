@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.tripmate.R
+import com.example.tripmate.MainActivity
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
@@ -27,7 +28,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         // View the trip through the Trips page
         view.findViewById<View>(R.id.btnViewTrip).setOnClickListener {
-            activity?.findViewById<View>(R.id.navTrips)?.performClick()
+            (activity as? MainActivity)?.openTripDetails()
         }
 
         // Create a trip through the Trips page
