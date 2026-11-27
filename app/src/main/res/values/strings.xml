@@ -8,4 +8,23 @@
     <string name="login">Login</string>
     <string name="don_t_have_an_account_register">Don\'t have an account? Register</string>
     <string name="mount_fuji_travel_scenery">Mount Fuji travel scenery</string>
+
+    <!-- Register screen -->
+    <string name="register_travel_scenery">Japanese pagoda and Mount Fuji travel scenery</string>
+    <string name="create_your_account">Create your account</string>
+    <string name="register_description">Start planning your next adventure with TripMate.</string>
+    <string name="full_name">Full Name</string>
+    <string name="enter_full_name">Enter your full name</string>
+    <string name="create_password_hint">Create a password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="reenter_password">Re-enter your password</string>
+    <string name="agree_terms">I agree to the Terms of Service and Privacy Policy</string>
+    <string name="create_account">Create Account</string>
+    <string name="or_sign_up_with">OR SIGN UP WITH</string>
+    <string name="google">Google</string>
+    <string name="facebook">Facebook</string>
+    <string name="google_logo">Google logo</string>
+    <string name="facebook_logo">Facebook logo</string>
+    <string name="already_have_account_sign_in">Already have an account? Sign in</string>
+
 </resources>

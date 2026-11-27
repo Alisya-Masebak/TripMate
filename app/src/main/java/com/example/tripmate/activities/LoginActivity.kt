@@ -1,5 +1,5 @@
 package com.example.tripmate.activities
-
+import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -18,12 +18,14 @@ class LoginActivity : AppCompatActivity() {
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+
             v.setPadding(
                 systemBars.left,
                 systemBars.top,
                 systemBars.right,
                 systemBars.bottom
             )
+
             insets
         }
 
@@ -32,6 +34,11 @@ class LoginActivity : AppCompatActivity() {
 
         tvForgotPassword.setOnClickListener {
             // Password reset functionality will be added later
+        }
+
+        // Navigate to Register screen
+        findViewById<TextView>(R.id.tvRegister).setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 }
