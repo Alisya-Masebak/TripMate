@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3EFFA"
+    android:fillViewport="true"
+    android:clipToPadding="false">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="24dp"
+        android:paddingBottom="32dp">
+
+        <!-- Header -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create New Trip"
+            android:textColor="#24212B"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="Plan your next adventure with TripMate."
+            android:textColor="#77717F"
+            android:textSize="14sp" />
+
+        <!-- Trip name -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="Trip Name"
+            android:textColor="#302C37"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etTripName"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_input"
+            android:hint="e.g. Japan Adventure"
+            android:inputType="textCapSentences"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:textColor="#302C37"
+            android:textColorHint="#9993A0"
+            android:textSize="14sp" />
+
+        <!-- Destination -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Destination"
+            android:textColor="#302C37"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etDestination"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_input"
+            android:hint="e.g. Japan"
+            android:inputType="textCapWords"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:textColor="#302C37"
+            android:textColorHint="#9993A0"
+            android:textSize="14sp" />
+
+        <!-- Start date -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Start Date"
+            android:textColor="#302C37"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvStartDate"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_input"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:hint="Select start date"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:textColor="#302C37"
+            android:textColorHint="#9993A0"
+            android:textSize="14sp" />
+
+        <!-- End date -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="End Date"
+            android:textColor="#302C37"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvEndDate"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_input"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:hint="Select end date"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:textColor="#302C37"
+            android:textColorHint="#9993A0"
+            android:textSize="14sp" />
+
+        <!-- Budget -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Total Budget (RM)"
+            android:textColor="#302C37"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etBudget"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_input"
+            android:hint="e.g. 2500"
+            android:inputType="numberDecimal"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:textColor="#302C37"
+            android:textColorHint="#9993A0"
+            android:textSize="14sp" />
+
+        <!-- Save button -->
+        <Button
+            android:id="@+id/btnSaveTrip"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="#245B55"
+            android:text="Save Trip"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <!-- Cancel button -->
+        <Button
+            android:id="@+id/btnCancelCreateTrip"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#E5DDF5"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:textColor="#245B55"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+</ScrollView>

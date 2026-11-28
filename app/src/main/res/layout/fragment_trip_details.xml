@@ -54,6 +54,7 @@
             android:padding="20dp">
 
             <TextView
+                android:id="@+id/tvDetailStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_icon_circle"
@@ -65,6 +66,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tvDetailTripName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
@@ -74,6 +76,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tvDetailDates"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -81,10 +84,49 @@
                 android:textColor="#777184"
                 android:textSize="14sp" />
 
+            <TextView
+                android:id="@+id/tvDetailDestination"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Tokyo, Mount Fuji, Osaka, Kyoto and Nara"
+                android:textColor="#777184"
+                android:textSize="13sp" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="17dp"
+                android:layout_marginTop="14dp"
+                android:background="#D5CBE8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BUDGET: "
+                    android:textColor="#777184"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvDetailBudget"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RM 5,000.00"
+                    android:textColor="#245B55"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="14dp"
                 android:background="#D5CBE8" />
 
             <LinearLayout

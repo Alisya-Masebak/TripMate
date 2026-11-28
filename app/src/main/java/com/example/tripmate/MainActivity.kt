@@ -9,12 +9,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
-import com.example.tripmate.fragments.HomeFragment
-import com.example.tripmate.fragments.TripsFragment
+import com.example.tripmate.fragments.CreateTripFragment
 import com.example.tripmate.fragments.ExploreFragment
 import com.example.tripmate.fragments.ExpensesFragment
+import com.example.tripmate.fragments.HomeFragment
 import com.example.tripmate.fragments.ProfileFragment
 import com.example.tripmate.fragments.TripDetailsFragment
+import com.example.tripmate.fragments.TripsFragment
+
 class MainActivity : AppCompatActivity() {
 
     private val selectedColor = 0xFF245B55.toInt()
@@ -27,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { view, insets ->
+
             val systemBars = insets.getInsets(
                 WindowInsetsCompat.Type.systemBars()
             )
@@ -69,6 +72,7 @@ class MainActivity : AppCompatActivity() {
     fun openExpenses() {
         navigateTo(ExpensesFragment(), R.id.navExpenses)
     }
+
     fun openTripDetails() {
         navigateTo(TripDetailsFragment(), R.id.navTrips)
     }
@@ -77,7 +81,21 @@ class MainActivity : AppCompatActivity() {
         navigateTo(TripsFragment(), R.id.navTrips)
     }
 
+    // Open the Create Trip form
+    fun openCreateTrip() {
+        navigateTo(CreateTripFragment(), R.id.navTrips)
+    }
+
+    fun openTripDetails(tripId: String? = null) {
+        navigateTo(
+            TripDetailsFragment.newInstance(tripId),
+            R.id.navTrips
+        )
+    }
+
+
     private fun navigateTo(fragment: Fragment, selectedNavId: Int) {
+
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainer, fragment)
             .commit()

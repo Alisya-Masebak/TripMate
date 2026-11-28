@@ -4,18 +4,36 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.tripmate.MainActivity
 import com.example.tripmate.R
+import com.example.tripmate.data.TripDraft
+import com.example.tripmate.data.TripDraftStore
+import java.text.NumberFormat
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class TripsFragment : Fragment(R.layout.fragment_trips) {
 
     private var selectedFilter = "All trips"
     private var searchText = ""
+
+    private data class TripCardItem(
+        val trip: TripDraft,
+        val card: LinearLayout
+    )
+
+    private val dynamicTripCards = mutableListOf<TripCardItem>()
+
+    private val dateFormat =
+        SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -26,27 +44,42 @@ class TripsFragment : Fragment(R.layout.fragment_trips) {
         val upcoming = view.findViewById<TextView>(R.id.filterUpcoming)
         val completed = view.findViewById<TextView>(R.id.filterCompleted)
 
-        // Open the existing Trip Details screen
-        view.findViewById<TextView>(R.id.btnTripDetails)
-            .setOnClickListener {
-                (activity as? MainActivity)?.openTripDetails()
-            }
+        // Existing Japan Trip Details navigation
+        view.findViewById<View>(R.id.btnTripDetails).setOnClickListener {
+            (activity as? MainActivity)?.openTripDetails()
+        }
+
+        // Open Create Trip form
+        view.findViewById<View>(R.id.btnCreateTrip).setOnClickListener {
+            (activity as? MainActivity)?.openCreateTrip()
+        }
+
+        // Display saved trips
+        displaySavedTrips(view)
 
         // Search trips
         searchInput.addTextChangedListener(object : TextWatcher {
 
             override fun beforeTextChanged(
-                s: CharSequence?, start: Int, count: Int, after: Int
-            ) {}
+                s: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {
+            }
 
             override fun onTextChanged(
-                s: CharSequence?, start: Int, before: Int, count: Int
+                s: CharSequence?,
+                start: Int,
+                before: Int,
+                count: Int
             ) {
                 searchText = s?.toString()?.trim()?.lowercase() ?: ""
                 updateTripVisibility(view)
             }
 
-            override fun afterTextChanged(s: Editable?) {}
+            override fun afterTextChanged(s: Editable?) {
+            }
         })
 
         // Filter buttons
@@ -64,6 +97,152 @@ class TripsFragment : Fragment(R.layout.fragment_trips) {
 
         updateFilterAppearance(view)
         updateTripVisibility(view)
+    }
+
+    private fun displaySavedTrips(view: View) {
+
+        val japanTripCard =
+            view.findViewById<LinearLayout>(R.id.japanTripCard)
+
+        val cardParent = japanTripCard.parent as? ViewGroup
+
+        if (cardParent == null) {
+            Toast.makeText(
+                requireContext(),
+                "Unable to display new trips. Please check the trip card layout.",
+                Toast.LENGTH_LONG
+            ).show()
+            return
+        }
+
+        dynamicTripCards.clear()
+
+        // Insert new trips immediately after the Japan card
+        var insertPosition = cardParent.indexOfChild(japanTripCard) + 1
+
+        TripDraftStore.trips.forEach { trip ->
+
+            val card = createTripCard(trip)
+
+            val layoutParams = if (cardParent is LinearLayout) {
+                LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                ).apply {
+                    topMargin = dpToPx(14)
+                }
+            } else {
+                ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
+            }
+
+            cardParent.addView(card, insertPosition, layoutParams)
+
+            dynamicTripCards.add(
+                TripCardItem(trip, card)
+            )
+
+            insertPosition++
+        }
+    }
+
+    private fun createTripCard(trip: TripDraft): LinearLayout {
+
+        val context = requireContext()
+
+        val card = LinearLayout(context).apply {
+            orientation = LinearLayout.VERTICAL
+
+            setPadding(
+                dpToPx(18),
+                dpToPx(18),
+                dpToPx(18),
+                dpToPx(18)
+            )
+
+            setBackgroundResource(R.drawable.bg_card_lavender)
+
+            // Make the complete card clickable
+            isClickable = true
+            isFocusable = true
+
+            setOnClickListener {
+                (activity as? MainActivity)?.openTripDetails(trip.id)
+            }
+        }
+
+        val status = if (isCompleted(trip)) {
+            "COMPLETED"
+        } else {
+            "UPCOMING"
+        }
+
+        val statusText = TextView(context).apply {
+            text = status
+            textSize = 10f
+            setTypeface(null, android.graphics.Typeface.BOLD)
+
+            setTextColor(
+                ContextCompat.getColor(
+                    context,
+                    R.color.tripmate_teal
+                )
+            )
+
+            setBackgroundResource(R.drawable.bg_icon_circle)
+
+            setPadding(
+                dpToPx(12),
+                dpToPx(5),
+                dpToPx(12),
+                dpToPx(5)
+            )
+        }
+
+        val tripName = TextView(context).apply {
+            text = trip.name
+            textSize = 21f
+            setTypeface(null, android.graphics.Typeface.BOLD)
+            setTextColor(0xFF245B55.toInt())
+            setPadding(0, dpToPx(14), 0, 0)
+        }
+
+        val destination = TextView(context).apply {
+            text = trip.destination
+            textSize = 14f
+            setTextColor(0xFF858292.toInt())
+            setPadding(0, dpToPx(7), 0, 0)
+        }
+
+        val dates = TextView(context).apply {
+            text = "${trip.startDate} - ${trip.endDate}"
+            textSize = 12f
+            setTextColor(0xFF858292.toInt())
+            setPadding(0, dpToPx(7), 0, 0)
+        }
+
+        val budget = TextView(context).apply {
+            text = "Budget: ${
+                NumberFormat.getCurrencyInstance(
+                    Locale("en", "MY")
+                ).format(trip.budget)
+            }"
+
+            textSize = 13f
+            setTypeface(null, android.graphics.Typeface.BOLD)
+            setTextColor(0xFF245B55.toInt())
+            setPadding(0, dpToPx(10), 0, 0)
+        }
+
+        card.addView(statusText)
+        card.addView(tripName)
+        card.addView(destination)
+        card.addView(dates)
+        card.addView(budget)
+
+        return card
     }
 
     private fun selectFilter(filter: String, view: View) {
@@ -105,26 +284,98 @@ class TripsFragment : Fragment(R.layout.fragment_trips) {
 
     private fun updateTripVisibility(view: View) {
 
-        val tripCard = view.findViewById<LinearLayout>(R.id.japanTripCard)
-        val emptyState = view.findViewById<LinearLayout>(R.id.emptyTripsState)
+        val japanTripCard =
+            view.findViewById<LinearLayout>(R.id.japanTripCard)
 
-        // Searchable information for the existing demo trip
-        val tripSearchContent = """
+        val emptyState =
+            view.findViewById<LinearLayout>(R.id.emptyTripsState)
+
+        val japanSearchContent = """
             tokyo osaka adventure japan mount fuji kyoto nara
             8 days 7 nights october 10 17
         """.lowercase()
 
-        val matchesSearch = tripSearchContent.contains(searchText)
+        val japanMatchesSearch =
+            japanSearchContent.contains(searchText)
 
-        // This demo trip is currently an upcoming trip
-        val matchesFilter = selectedFilter != "Completed"
+        // Existing Japan demo trip is treated as upcoming
+        val japanMatchesFilter =
+            selectedFilter != "Completed"
 
-        val shouldShowTrip = matchesSearch && matchesFilter
+        val showJapanTrip =
+            japanMatchesSearch && japanMatchesFilter
 
-        tripCard.visibility =
-            if (shouldShowTrip) View.VISIBLE else View.GONE
+        japanTripCard.visibility = if (showJapanTrip) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
 
-        emptyState.visibility =
-            if (shouldShowTrip) View.GONE else View.VISIBLE
+        var visibleTripCount = if (showJapanTrip) 1 else 0
+
+        // Update newly created trip cards
+        dynamicTripCards.forEach { item ->
+
+            val trip = item.trip
+
+            val searchableText = """
+                ${trip.name}
+                ${trip.destination}
+                ${trip.startDate}
+                ${trip.endDate}
+            """.lowercase()
+
+            val matchesSearch = searchableText.contains(searchText)
+
+            val completed = isCompleted(trip)
+
+            val matchesFilter = when (selectedFilter) {
+                "Upcoming" -> !completed
+                "Completed" -> completed
+                else -> true
+            }
+
+            val shouldShow = matchesSearch && matchesFilter
+
+            item.card.visibility = if (shouldShow) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
+
+            if (shouldShow) {
+                visibleTripCount++
+            }
+        }
+
+        // Show empty state only when no trips match
+        emptyState.visibility = if (visibleTripCount == 0) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
+    }
+
+    private fun isCompleted(trip: TripDraft): Boolean {
+
+        return try {
+            val endDate = dateFormat.parse(trip.endDate) ?: return false
+
+            val today = Calendar.getInstance().apply {
+                set(Calendar.HOUR_OF_DAY, 0)
+                set(Calendar.MINUTE, 0)
+                set(Calendar.SECOND, 0)
+                set(Calendar.MILLISECOND, 0)
+            }
+
+            endDate.before(today.time)
+
+        } catch (e: Exception) {
+            false
+        }
+    }
+
+    private fun dpToPx(dp: Int): Int {
+        return (dp * resources.displayMetrics.density).toInt()
     }
 }
