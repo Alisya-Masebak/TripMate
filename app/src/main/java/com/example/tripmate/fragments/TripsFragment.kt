@@ -291,19 +291,28 @@ class TripsFragment : Fragment(R.layout.fragment_trips) {
             view.findViewById<LinearLayout>(R.id.emptyTripsState)
 
         val japanSearchContent = """
-            tokyo osaka adventure japan mount fuji kyoto nara
-            8 days 7 nights october 10 17
-        """.lowercase()
+        japan adventure tokyo osaka mount fuji kyoto nara
+        8 days 7 nights 11 18 december dec 2026
+        11–18 dec 2026
+    """.lowercase()
 
         val japanMatchesSearch =
             japanSearchContent.contains(searchText)
 
-        // Existing Japan demo trip is treated as upcoming
-        val japanMatchesFilter =
-            selectedFilter != "Completed"
+        // Determine Japan trip status using its actual end date
+        val japanCompleted = isJapanTripCompleted()
+
+        val japanMatchesFilter = when (selectedFilter) {
+            "Upcoming" -> !japanCompleted
+            "Completed" -> japanCompleted
+            else -> true
+        }
 
         val showJapanTrip =
             japanMatchesSearch && japanMatchesFilter
+        // Update Japan card status label
+        view.findViewById<TextView>(R.id.tvJapanTripStatus).text =
+            if (japanCompleted) "COMPLETED" else "UPCOMING"
 
         japanTripCard.visibility = if (showJapanTrip) {
             View.VISIBLE
@@ -369,6 +378,25 @@ class TripsFragment : Fragment(R.layout.fragment_trips) {
             }
 
             endDate.before(today.time)
+
+        } catch (e: Exception) {
+            false
+        }
+    }
+    private fun isJapanTripCompleted(): Boolean {
+
+        return try {
+            val japanEndDate =
+                dateFormat.parse("18 Dec 2026") ?: return false
+
+            val today = Calendar.getInstance().apply {
+                set(Calendar.HOUR_OF_DAY, 0)
+                set(Calendar.MINUTE, 0)
+                set(Calendar.SECOND, 0)
+                set(Calendar.MILLISECOND, 0)
+            }
+
+            japanEndDate.before(today.time)
 
         } catch (e: Exception) {
             false

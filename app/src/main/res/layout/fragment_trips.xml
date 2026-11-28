@@ -163,6 +163,7 @@
                     android:layout_gravity="bottom|start"
                     android:layout_margin="12dp"
                     android:background="@drawable/bg_filter_selected"
+                    android:id="@+id/tvJapanTripStatus"
                     android:paddingStart="12dp"
                     android:paddingTop="5dp"
                     android:paddingEnd="12dp"

@@ -58,7 +58,9 @@ class TripDetailsFragment : Fragment(R.layout.fragment_trip_details) {
             if (isCompleted(trip.endDate)) "COMPLETED" else "UPCOMING"
     }
 
+
     private fun displayDefaultJapanTrip(view: View) {
+
         view.findViewById<TextView>(R.id.tvDetailTripName).text =
             "Japan Adventure"
 
@@ -66,13 +68,13 @@ class TripDetailsFragment : Fragment(R.layout.fragment_trip_details) {
             "Tokyo, Mount Fuji, Osaka, Kyoto and Nara"
 
         view.findViewById<TextView>(R.id.tvDetailDates).text =
-            "10 Oct 2026 - 17 Oct 2026"
+            "11 Dec 2026 - 18 Dec 2026"
 
         view.findViewById<TextView>(R.id.tvDetailBudget).text =
             "See your Expenses screen"
 
         view.findViewById<TextView>(R.id.tvDetailStatus).text =
-            "JAPAN DEMO TRIP"
+            "UPCOMING"
     }
 
     private fun isCompleted(endDateText: String): Boolean {
