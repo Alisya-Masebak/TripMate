@@ -118,4 +118,8 @@ class AuthenticationRepository {
     suspend fun signOut() {
         supabase.auth.signOut()
     }
+    suspend fun getCurrentUserEmail(): String? {
+        supabase.auth.awaitInitialization()
+        return supabase.auth.currentUserOrNull()?.email
+    }
 }
