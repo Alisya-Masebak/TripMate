@@ -39,6 +39,16 @@
             android:name=".activities.AdminDashboardActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".activities.ManageDestinationsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".activities.AddDestinationActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
     </application>
 
 </manifest>

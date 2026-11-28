@@ -27,4 +27,138 @@
     <string name="facebook_logo">Facebook logo</string>
     <string name="already_have_account_sign_in">Already have an account? Sign in</string>
 
+    <!-- Admin Dashboard -->
+    <string name="admin_dashboard_title">Admin dashboard</string>
+    <string name="admin_welcome_back">Welcome back, %1$s</string>
+    <string name="admin_welcome_default">Welcome back</string>
+    <string name="admin_dashboard_subtitle">Keep great places easy to discover.</string>
+    <string name="admin_fallback_name">Administrator</string>
+    <string name="admin_email_unavailable">Email unavailable</string>
+    <string name="admin_role_label">Administrator · Assigned account</string>
+
+    <string name="total_destinations">Total destinations</string>
+    <string name="active_destinations">Active destinations</string>
+
+    <string name="add_destination">Add Destination</string>
+    <string name="manage_destinations">Manage Destinations</string>
+
+    <string name="recent_destination_updates">Recent destination updates</string>
+    <string name="admin_no_recent_updates">No destination updates yet. Add a destination to see recent activity.</string>
+    <string name="admin_recent_last_changed">Last changed · %1$s</string>
+
+    <string name="dashboard">Dashboard</string>
+    <string name="destinations">Destinations</string>
+    <string name="account">Account</string>
+
+    <string name="admin_destination_screens_next">Destination management screens are the next development step.</string>
+    <string name="admin_account_title">Administrator account</string>
+
+    <string name="sign_out">Sign Out</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="admin_access_required">Administrator access is required.</string>
+    <string name="admin_verification_failed">Unable to verify your administrator account.</string>
+    <string name="admin_destination_load_error">Unable to load destination data. Please try again.</string>
+    <string name="admin_sign_out_failed">Unable to sign out.</string>
+    <string name="admin_stat_loading">—</string>
+
+    <!-- Manage Destinations -->
+    <string name="manage_destinations_title">Manage destinations</string>
+
+    <string name="manage_destinations_search_label">Search destinations</string>
+    <string name="manage_destinations_search_hint">Search by name or country</string>
+
+    <string name="destination_filter_all">All</string>
+    <string name="destination_filter_nature">Nature</string>
+    <string name="destination_filter_culture">Culture</string>
+    <string name="destination_filter_city">City</string>
+
+    <string name="destination_count_initial">Loading destinations...</string>
+    <string name="destination_count_unavailable">Destination count unavailable</string>
+    <string name="destination_count_format">%1$d destinations · %2$d active</string>
+
+    <string name="destination_status_active">Active · Visible in Explore</string>
+    <string name="destination_status_inactive">Inactive · Hidden from Explore</string>
+
+    <string name="destination_country_category">%1$s · %2$s</string>
+
+    <string name="destination_empty_message">No destinations yet. Add a destination to make it available in Explore.</string>
+    <string name="destination_search_empty">No destinations match your search or selected category.</string>
+    <string name="destination_end">All destinations shown</string>
+
+    <string name="destination_action_edit">Edit</string>
+    <string name="destination_action_delete">Delete</string>
+
+    <string name="destination_delete_title">Delete destination?</string>
+    <string name="destination_delete_message">Are you sure you want to delete %1$s? This action cannot be undone.</string>
+    <string name="destination_delete_success">Destination deleted successfully.</string>
+    <string name="destination_delete_error">Unable to delete destination.</string>
+    <string name="destination_delete_linked_error">This destination is already used in a traveller itinerary and cannot be deleted.</string>
+
+    <string name="destination_list_load_error">Unable to load destinations. Please check your connection and try again.</string>
+    <string name="destination_edit_next">The Edit Destination screen will be implemented in the next step.</string>
+    <string name="destination_add_next">The Add Destination screen will be implemented in the next step.</string>
+
+    <string name="destination_description_unavailable">No description available.</string>
+    <string name="destination_image">Destination image</string>
+    <string name="destination_details_title">Destination details</string>
+
+    <string name="back">Back</string>
+    <string name="close">Close</string>
+
+    <!-- Add Destination -->
+    <string name="add_destination_title">Add destination</string>
+    <string name="add_destination_intro">Put somewhere new on the map.</string>
+    <string name="add_destination_required_note">Fields marked * are required.</string>
+
+    <string name="destination_name_label">Destination name *</string>
+    <string name="destination_name_hint">Enter destination name</string>
+
+    <string name="destination_country_label">Country *</string>
+    <string name="destination_country_hint">Enter country</string>
+
+    <string name="destination_description_label">Description *</string>
+    <string name="destination_description_hint">Enter a description of this destination.</string>
+
+    <string name="destination_category_label">Category *</string>
+
+    <string name="destination_cover_image_label">Destination cover image *</string>
+    <string name="destination_choose_image">Choose cover image</string>
+    <string name="destination_change_image">Change cover image</string>
+    <string name="destination_image_help">JPG or PNG · Up to 5 MB · Landscape recommended</string>
+    <string name="destination_no_image_selected">Please choose a cover image to upload.</string>
+    <string name="destination_image_selected">Image selected · %1$s</string>
+
+    <string name="destination_latitude_label">Latitude *</string>
+    <string name="destination_latitude_hint">Example: 35.5171</string>
+    <string name="destination_longitude_label">Longitude *</string>
+    <string name="destination_longitude_hint">Example: 138.7518</string>
+    <string name="destination_coordinates_help">Use decimal degrees. Latitude must be between −90 and 90. Longitude must be between −180 and 180.</string>
+
+    <string name="visibility_active_title">Active · Visible to travellers</string>
+    <string name="visibility_active_description">Deactivate to hide this destination without deleting its record.</string>
+    <string name="visibility_set_inactive">Set inactive</string>
+
+    <string name="visibility_inactive_title">Inactive · Hidden from travellers</string>
+    <string name="visibility_inactive_description">Activate this destination to make it visible to travellers in Explore.</string>
+    <string name="visibility_set_active">Set active</string>
+
+    <string name="save_destination">Save Destination</string>
+    <string name="saving_destination">Saving destination...</string>
+
+    <string name="destination_name_required">Please enter a destination name.</string>
+    <string name="destination_country_required">Please enter a country.</string>
+    <string name="destination_description_required">Please enter a destination description.</string>
+    <string name="destination_image_required">Please choose a destination cover image.</string>
+
+    <string name="destination_latitude_invalid">Enter a valid latitude between -90 and 90.</string>
+    <string name="destination_longitude_invalid">Enter a valid longitude between -180 and 180.</string>
+
+    <string name="destination_image_format_error">Only JPG and PNG images are supported.</string>
+    <string name="destination_image_size_error">The image must not exceed 5 MB.</string>
+    <string name="destination_image_read_error">Unable to read the selected image. Please try again.</string>
+
+    <string name="destination_save_success">Destination added successfully.</string>
+    <string name="destination_save_error">Unable to save the destination. Please try again.</string>
+
 </resources>
