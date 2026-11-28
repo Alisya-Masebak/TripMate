@@ -28,20 +28,15 @@ data class UploadedDestinationImage(
 
 @Serializable
 private data class NewDestinationRecord(
-
     val name: String,
-
     val country: String,
-
     val description: String,
-
     val category: String,
 
     @SerialName("image_url")
     val imageUrl: String,
 
     val latitude: Double,
-
     val longitude: Double,
 
     @SerialName("is_active")
@@ -73,16 +68,18 @@ class DestinationRepository {
             .select(
                 columns = Columns.raw(
                     """
-                id,
-                name,
-                country,
-                description,
-                category,
-                image_url,
-                is_active,
-                created_at,
-                updated_at
-                """.trimIndent()
+                    id,
+                    name,
+                    country,
+                    description,
+                    category,
+                    image_url,
+                    latitude,
+                    longitude,
+                    is_active,
+                    created_at,
+                    updated_at
+                    """.trimIndent()
                 )
             ) {
                 order(
@@ -92,6 +89,45 @@ class DestinationRepository {
             }
             .decodeList<DestinationRecord>()
     }
+
+    // --------------------------------------------------
+    // GET ONE DESTINATION
+    // --------------------------------------------------
+
+    suspend fun getDestinationById(
+        destinationId: String
+    ): DestinationRecord {
+
+        require(destinationId.isNotBlank()) {
+            "Destination ID is required."
+        }
+
+        return supabase
+            .from("destinations")
+            .select(
+                columns = Columns.raw(
+                    """
+                    id,
+                    name,
+                    country,
+                    description,
+                    category,
+                    image_url,
+                    latitude,
+                    longitude,
+                    is_active,
+                    created_at,
+                    updated_at
+                    """.trimIndent()
+                )
+            ) {
+                filter {
+                    eq("id", destinationId)
+                }
+            }
+            .decodeSingle<DestinationRecord>()
+    }
+
     // --------------------------------------------------
     // UPLOAD DESTINATION IMAGE
     // --------------------------------------------------
@@ -124,11 +160,9 @@ class DestinationRepository {
             )
         }
 
-        // Generate a unique path to prevent file conflicts.
         val imagePath =
             "${UUID.randomUUID()}.$extension"
 
-        // Upload using the authenticated Admin session.
         imageBucket.upload(
             path = imagePath,
             data = imageBytes
@@ -137,8 +171,8 @@ class DestinationRepository {
             upsert = false
         }
 
-        // The bucket is already configured as public.
-        val publicUrl = imageBucket.publicUrl(imagePath)
+        val publicUrl =
+            imageBucket.publicUrl(imagePath)
 
         return UploadedDestinationImage(
             path = imagePath,
@@ -147,8 +181,7 @@ class DestinationRepository {
     }
 
     // --------------------------------------------------
-    // REMOVE AN UPLOADED IMAGE
-    // Used to clean up if the database insert fails.
+    // DELETE UPLOADED IMAGE BY STORAGE PATH
     // --------------------------------------------------
 
     suspend fun deleteUploadedDestinationImage(
@@ -157,6 +190,44 @@ class DestinationRepository {
 
         if (imagePath.isNotBlank()) {
             imageBucket.delete(imagePath)
+        }
+    }
+
+    // --------------------------------------------------
+    // DELETE IMAGE USING ITS PUBLIC URL
+    // --------------------------------------------------
+
+    suspend fun deleteDestinationImage(
+        imageUrl: String?
+    ): Boolean {
+
+        val marker =
+            "/storage/v1/object/public/destination-images/"
+
+        val url = imageUrl ?: return true
+
+        val markerPosition = url.indexOf(marker)
+
+        if (markerPosition == -1) {
+            // Do not attempt to delete an external image.
+            return true
+        }
+
+        val imagePath = url
+            .substring(markerPosition + marker.length)
+            .substringBefore("?")
+            .takeIf { it.isNotBlank() }
+            ?: return true
+
+        return try {
+
+            imageBucket.delete(imagePath)
+
+            true
+
+        } catch (_: Exception) {
+
+            false
         }
     }
 
@@ -209,12 +280,72 @@ class DestinationRepository {
     }
 
     // --------------------------------------------------
+    // UPDATE DESTINATION
+    // --------------------------------------------------
+
+    suspend fun updateDestination(
+        destinationId: String,
+        name: String,
+        country: String,
+        description: String,
+        category: String,
+        imageUrl: String,
+        latitude: Double,
+        longitude: Double,
+        isActive: Boolean,
+        adminUserId: String
+    ) {
+
+        require(destinationId.isNotBlank()) {
+            "Destination ID is required."
+        }
+
+        require(adminUserId.isNotBlank()) {
+            "Administrator account is required."
+        }
+
+        supabase
+            .from("destinations")
+            .update({
+
+                set("name", name.trim())
+
+                set("country", country.trim())
+
+                set("description", description.trim())
+
+                set("category", category)
+
+                set("image_url", imageUrl)
+
+                set("latitude", latitude)
+
+                set("longitude", longitude)
+
+                set("is_active", isActive)
+
+                set("updated_by", adminUserId)
+
+            }) {
+                filter {
+                    eq("id", destinationId)
+                }
+            }
+    }
+
+    // --------------------------------------------------
     // DELETE DESTINATION
     // --------------------------------------------------
 
+    // The database record is deleted first.
+    // Then its Storage image is removed.
+    // A failed image cleanup does not hide the successful
+    // database deletion from the user.
+
     suspend fun deleteDestination(
-        destinationId: String
-    ) {
+        destinationId: String,
+        imageUrl: String?
+    ): Boolean {
 
         require(destinationId.isNotBlank()) {
             "Destination ID is required."
@@ -227,6 +358,8 @@ class DestinationRepository {
                     eq("id", destinationId)
                 }
             }
+
+        return deleteDestinationImage(imageUrl)
     }
 
     // --------------------------------------------------

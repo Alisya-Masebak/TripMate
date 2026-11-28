@@ -195,21 +195,21 @@
                     android:textStyle="bold" />
 
                 <!-- Manage destinations button -->
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnManageDestinations"
                     android:layout_width="match_parent"
                     android:layout_height="54dp"
                     android:layout_marginTop="18dp"
                     android:background="@drawable/bg_admin_action_secondary"
+                    android:backgroundTint="@null"
+                    app:backgroundTint="@null"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
                     android:minHeight="0dp"
-                    android:backgroundTint="@null"
-                    app:backgroundTint="@null"
                     android:stateListAnimator="@null"
                     android:text="@string/manage_destinations"
                     android:textAllCaps="false"
-                    android:textColor="#245B55"
+                    android:textColor="@color/primary"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 

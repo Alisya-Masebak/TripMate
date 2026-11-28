@@ -540,11 +540,18 @@ class ManageDestinationsActivity : AppCompatActivity() {
         // in the next development increment.
         btnEdit.setOnClickListener {
 
-            Toast.makeText(
+            val intent = Intent(
                 this,
-                R.string.destination_edit_next,
-                Toast.LENGTH_SHORT
-            ).show()
+                EditDestinationActivity::class.java
+            ).apply {
+
+                putExtra(
+                    EditDestinationActivity.EXTRA_DESTINATION_ID,
+                    destination.id
+                )
+            }
+
+            startActivity(intent)
         }
 
         // Delete destination.
@@ -748,14 +755,20 @@ class ManageDestinationsActivity : AppCompatActivity() {
 
             try {
 
-                destinationRepository.deleteDestination(
-                    destination.id
-                )
+                val imageRemoved =
+                    destinationRepository.deleteDestination(
+                        destination.id,
+                        destination.imageUrl
+                    )
 
                 Toast.makeText(
                     this@ManageDestinationsActivity,
-                    R.string.destination_delete_success,
-                    Toast.LENGTH_SHORT
+                    if (imageRemoved) {
+                        R.string.destination_delete_success
+                    } else {
+                        R.string.destination_delete_success_image_warning
+                    },
+                    Toast.LENGTH_LONG
                 ).show()
 
                 loadDestinations()
@@ -765,14 +778,8 @@ class ManageDestinationsActivity : AppCompatActivity() {
                 val message = e.message.orEmpty()
 
                 val displayMessage = if (
-                    message.contains(
-                        "foreign key",
-                        ignoreCase = true
-                    ) ||
-                    message.contains(
-                        "violates",
-                        ignoreCase = true
-                    )
+                    message.contains("foreign key", ignoreCase = true) ||
+                    message.contains("violates", ignoreCase = true)
                 ) {
 
                     getString(
@@ -782,9 +789,7 @@ class ManageDestinationsActivity : AppCompatActivity() {
                 } else {
 
                     e.message
-                        ?: getString(
-                            R.string.destination_delete_error
-                        )
+                        ?: getString(R.string.destination_delete_error)
                 }
 
                 Toast.makeText(

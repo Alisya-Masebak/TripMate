@@ -161,4 +161,24 @@
     <string name="destination_save_success">Destination added successfully.</string>
     <string name="destination_save_error">Unable to save the destination. Please try again.</string>
 
+    <!-- Edit Destination -->
+    <string name="edit_destination_title">Edit destination</string>
+    <string name="edit_destination_intro">Refine a place worth exploring.</string>
+    <string name="edit_destination_note">Existing information is prefilled. Only changed fields will be updated.</string>
+
+    <string name="destination_replace_image">Replace cover image</string>
+    <string name="destination_existing_image_kept">Current cover image will be kept unless you replace it.</string>
+    <string name="destination_new_image_selected">New image selected · %1$s</string>
+
+    <string name="save_destination_changes">Save Changes</string>
+    <string name="saving_destination_changes">Saving changes...</string>
+
+    <string name="destination_edit_load_error">Unable to load destination information.</string>
+    <string name="destination_edit_error">Unable to update destination. Please try again.</string>
+    <string name="destination_edit_success">Destination updated successfully.</string>
+    <string name="destination_edit_success_image_warning">Destination updated successfully, but the previous image could not be removed from Storage.</string>
+    <string name="destination_delete_success_image_warning">
+    Destination deleted, but its image could not be removed from Storage.
+</string>
+
 </resources>

@@ -19,6 +19,10 @@ data class DestinationRecord(
     @SerialName("image_url")
     val imageUrl: String? = null,
 
+    val latitude: Double? = null,
+
+    val longitude: Double? = null,
+
     @SerialName("is_active")
     val isActive: Boolean,
 
